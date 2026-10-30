@@ -16,6 +16,9 @@ Construa o conteúdo da página o mais próximo possível da referência usando 
 - Se a referência exigir um template que não existe, explique o limite e encaminhe essa parte para a equipe da Orbite. Não tente contornar o limite gerando PHP, SCSS ou JavaScript do tema.
 - Código criado pelo cliente fica limitado aos componentes interativos de mídia e pertence a `$orbite-media-component-builder`.
 - Use componentes, escalas, tokens e padrões que já existem no Design System.
+- Toda página criada ou duplicada deve começar como rascunho.
+- Só publique uma página ou a devolva para rascunho quando o usuário pedir e autorizar essa mudança claramente.
+- Nunca mova páginas para a lixeira nem as exclua definitivamente por este fluxo.
 - Não exponha tokens, credenciais ou segredos em mensagens, arquivos ou logs.
 
 ## Antes de trabalhar
@@ -35,12 +38,13 @@ Construa o conteúdo da página o mais próximo possível da referência usando 
 6. Atualize somente os campos necessários da página ou dos menus. Para configurações globais, use `$orbite-global-settings`.
    Para criar ou editar código interativo dentro de um espaço de mídia, use `$orbite-media-component-builder`; esta skill continua responsável por localizar a página, a seção e o alvo exato.
 7. Leia novamente pelo MCP para confirmar que a gravação funcionou.
-8. Abra a página no navegador, siga o fluxo de validação visual do ChatPanel quando precisar conferir wireframes, compare com a imagem e faça ajustes pequenos e verificáveis.
-9. Termine com um resumo do que mudou, do que foi testado e das limitações restantes.
+8. Quando o usuário pedir publicação ou retorno para rascunho, releia a página e use `set_page_status` com o `content_hash` e o status atuais. Confirme o status final com outra leitura.
+9. Abra a página no navegador, siga o fluxo de validação visual do ChatPanel quando precisar conferir wireframes, compare com a imagem e faça ajustes pequenos e verificáveis.
+10. Termine com um resumo do que mudou, do que foi testado e das limitações restantes.
 
 ## Limite de responsabilidade
 
-O MCP cria páginas somente como rascunho e cuida do conteúdo, imagens, configurações globais, menus e seleção de modelos já cadastrados no Site identificado pela conexão.
+O MCP cria e duplica páginas somente como rascunho. Depois, pode publicar ou devolver uma página para rascunho com autorização explícita, além de cuidar do conteúdo, imagens, configurações globais, menus e seleção de modelos já cadastrados no Site identificado pela conexão.
 
 Templates de página, cabeçalho e rodapé são responsabilidade exclusiva do fluxo interno da Orbite. O cliente pode gerar código somente dentro dos componentes interativos de mídia.
 

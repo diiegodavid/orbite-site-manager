@@ -14,6 +14,7 @@ Use a conexão MCP explicitamente escolhida para a tarefa.
 | Listar páginas | `list_pages` | `search`, `status`, `page`, `per_page` |
 | Criar página em rascunho | `create_page` | `title`, `slug` |
 | Duplicar página em rascunho | `duplicate_page` | `source_id` ou `source_slug` |
+| Publicar ou voltar para rascunho | `set_page_status` | `id` ou `slug`, `status`, `expected_hash`, `expected_status` |
 | Listar áreas globais | `list_global_settings_areas` | nenhuma |
 | Ler uma área global | `get_global_settings_context` | `area` |
 | Atualizar uma área global | `update_global_settings_context` | `area`, `changes`, `expected_hash` |
@@ -27,7 +28,7 @@ Use a conexão MCP explicitamente escolhida para a tarefa.
 
 ## O que o MCP não pode fazer
 
-- Publicar ou apagar páginas.
+- Mover páginas para a lixeira ou excluí-las definitivamente.
 - Criar, editar ou apagar arquivos de template.
 - Gerar imagens por conta própria. A geração acontece no Codex e o MCP faz o upload.
 - Escolher ou trocar o Site de destino por uma URL enviada no chat.
@@ -46,6 +47,8 @@ Esta skill não executa deploy nem altera arquivos do tema.
 
 Ao atualizar uma página, envie o `content_hash` da leitura anterior em `expected_hash`. O MCP não cria cópias da página; o histórico fica por conta das revisões nativas do WordPress.
 
+Para publicar ou devolver uma página para rascunho, releia a página imediatamente antes da ação e use `set_page_status` com o `content_hash` em `expected_hash` e o status atual em `expected_status`. Use somente `publish` ou `draft`, após pedido e autorização explícitos do usuário, e releia a página para confirmar o status final.
+
 Para alterar configurações globais, use `$orbite-global-settings`. Não envie o JSON amplo do Design System por esta skill.
 
 ## Falhas
@@ -53,6 +56,7 @@ Para alterar configurações globais, use `$orbite-global-settings`. Não envie 
 - Se o MCP não estiver conectado, peça ao usuário para ativar a conexão correspondente ao Site e ao ambiente autorizados.
 - Se a conexão não identificar claramente um Site válido, pare e peça ao usuário para conferir a configuração MCP.
 - Se o pedido for criar uma página nova, use `create_page` e mantenha o rascunho. Se o usuário apontou uma página existente que não foi encontrada, pare e confirme o destino antes de criar outra.
+- Se a página ou o status tiver mudado depois da última leitura, releia e apresente novamente a proposta. Não publique nem volte para rascunho automaticamente.
 - Se a leitura após a gravação não confirmar a mudança, trate a operação como não concluída e explique o erro de forma simples.
 
 ## Conteúdo

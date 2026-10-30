@@ -39,7 +39,7 @@ Depois de atualizar, abra uma nova conversa para carregar a nova versão das ski
 
 ## O que o plugin permite
 
-- criar e editar páginas usando templates já cadastrados;
+- criar e editar páginas usando templates já cadastrados, além de publicá-las ou devolvê-las para rascunho com autorização;
 - gerenciar artigos, categorias e SEO;
 - ajustar configurações globais, menus, cabeçalhos e rodapés;
 - criar componentes interativos nos espaços de mídia.
