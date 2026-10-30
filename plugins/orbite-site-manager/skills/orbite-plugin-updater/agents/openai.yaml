@@ -1,0 +1,7 @@
+interface:
+  display_name: "Orbite Plugin Updater"
+  short_description: "Atualiza o plugin Orbite com autorização"
+  default_prompt: "Use $orbite-plugin-updater para configurar a atualização automática a cada 15 dias ou atualizar o plugin manualmente."
+
+policy:
+  allow_implicit_invocation: true
