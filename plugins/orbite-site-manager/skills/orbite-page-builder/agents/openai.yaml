@@ -1,0 +1,7 @@
+interface:
+  display_name: "Orbite Page Builder"
+  short_description: "Gerencia páginas com templates existentes"
+  default_prompt: "Use $orbite-page-builder para criar ou ajustar uma página com os templates já cadastrados no Site."
+
+policy:
+  allow_implicit_invocation: true

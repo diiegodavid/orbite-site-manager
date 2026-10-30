@@ -1,0 +1,8 @@
+interface:
+  display_name: "Orbite Global Settings"
+  short_description: "Gerencia o Design System com segurança"
+  default_prompt: "Use $orbite-global-settings para consultar uma área das configurações globais e propor somente as alterações necessárias."
+
+policy:
+  allow_implicit_invocation: true
+

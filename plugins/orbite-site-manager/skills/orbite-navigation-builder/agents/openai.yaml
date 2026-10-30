@@ -1,0 +1,7 @@
+interface:
+  display_name: "Orbite Navigation Builder"
+  short_description: "Gerencia menus e modelos já cadastrados"
+  default_prompt: "Use $orbite-navigation-builder para ajustar os menus ou selecionar um modelo já cadastrado de cabeçalho ou rodapé."
+
+policy:
+  allow_implicit_invocation: true

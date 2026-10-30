@@ -1,0 +1,8 @@
+interface:
+  display_name: "Orbite Article Builder"
+  short_description: "Cria artigos no Site MCP conectado"
+  default_prompt: "Use $orbite-article-builder para criar um artigo completo, sem FAQ no conteúdo, como rascunho no Site MCP conectado."
+
+policy:
+  allow_implicit_invocation: true
+

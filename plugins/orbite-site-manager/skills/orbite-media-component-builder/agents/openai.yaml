@@ -1,0 +1,7 @@
+interface:
+  display_name: "Orbite Media Component Builder"
+  short_description: "Cria componentes interativos para mídias"
+  default_prompt: "Use $orbite-media-component-builder para criar um componente interativo responsivo neste espaço de mídia."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "orbite-site-manager",
+  "version": "0.1.0",
+  "description": "Gerencie conteúdo, aparência, navegação e componentes de um site Orbite conectado via MCP.",
+  "author": {
+    "name": "Orbite",
+    "url": "https://www.orbite.com.br"
+  },
+  "homepage": "https://www.orbite.com.br",
+  "keywords": [
+    "orbite",
+    "wordpress",
+    "site-management",
+    "mcp"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Orbite",
+        "shortDescription": "Gerencie seu site Orbite pelo Codex.",
+        "longDescription": "Fluxos guiados para gerenciar conteúdo, aparência, navegação e componentes do site conectado via MCP.",
+        "developerName": "Orbite",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://www.orbite.com.br",
+        "defaultPrompt": [
+          "Use a Orbite para criar ou atualizar conteúdo no meu site conectado."
+        ]
+      }
+    }
+  }
+}
