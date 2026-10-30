@@ -10,8 +10,8 @@ Gerencie o Design System do Site sem inventar chaves e sem alterar configuraçõ
 ## Regras obrigatórias
 
 - A chamada desta skill não autoriza alterações. Primeiro consulte, explique a proposta e peça autorização.
-- Confirme a conexão MCP, o ambiente e o modo antes de trabalhar. Se houver dúvida, não altere nada.
-- Em modo `self`, use somente o próprio Site conectado. Em modo `customer`, use somente o Site salvo no painel da Orbite.
+- Confirme a conexão MCP, o ambiente e o Site identificado por ela antes de trabalhar. Se houver dúvida, não altere nada.
+- Use somente o Site identificado pela conexão MCP escolhida.
 - Nunca aceite outra URL enviada no chat nem troque de conexão silenciosamente.
 - Use as ferramentas contextuais. Não use `update_global_settings` em um fluxo novo.
 - Nunca altere tokens, credenciais, campos internos ou campos marcados como somente leitura.

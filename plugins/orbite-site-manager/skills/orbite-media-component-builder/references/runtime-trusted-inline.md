@@ -52,13 +52,9 @@ Não presuma autoplay. Pause trabalho contínuo quando o componente for desativa
 
 ## Ações do Site
 
-Não acople o componente à estrutura interna do modal ou a seletores da página. Solicite uma ação pelo host:
+Não acople o componente à estrutura interna do Site ou a seletores da página. Quando o contexto do Site informar uma ação permitida, solicite-a pela API `OrbiteMedia.requestHostAction()` e inclua `host-action` em `requested_capabilities`.
 
-```js
-OrbiteMedia.requestHostAction('open-start-plan');
-```
-
-Essa ação exige `host-action` em `requested_capabilities`. O host aceita somente ações conhecidas; nesta entrega, a ação permitida é `open-start-plan`. URLs, nomes de função, seletores ou comandos arbitrários não são ações válidas.
+Use somente o nome de ação informado pelo contexto e aprovado para o Site conectado. URLs, nomes de função, seletores ou comandos arbitrários não são ações válidas.
 
 ## Responsividade
 

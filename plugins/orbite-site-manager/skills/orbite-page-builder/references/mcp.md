@@ -2,8 +2,7 @@
 
 Use a conexão MCP explicitamente escolhida para a tarefa.
 
-- Em modo `self`, o destino é o próprio Site conectado em `/mcp`.
-- Em modo `customer`, disponível somente na Orbite, o destino é o Site salvo no painel e a conexão usa `/mcp/customer`.
+- O destino é o Site identificado pela própria conexão em `/mcp`.
 - Nunca aceite outra URL enviada no chat nem altere os dois ambientes na mesma tarefa.
 
 ## O que o MCP pode fazer
@@ -34,7 +33,7 @@ Use a conexão MCP explicitamente escolhida para a tarefa.
 - Escolher ou trocar o Site de destino por uma URL enviada no chat.
 - Alterar ao mesmo tempo os ambientes local e de produção.
 
-Em modo Customer, o Site é configurado separadamente no painel de cada ambiente da Orbite. Esta skill não executa deploy nem altera arquivos do tema.
+Esta skill não executa deploy nem altera arquivos do tema.
 
 ## Sequência segura
 
@@ -52,7 +51,7 @@ Para alterar configurações globais, use `$orbite-global-settings`. Não envie 
 ## Falhas
 
 - Se o MCP não estiver conectado, peça ao usuário para ativar a conexão correspondente ao Site e ao ambiente autorizados.
-- Em modo Customer, se não houver Site válido, peça para o usuário informar e salvar o Site no painel da Orbite. Em modo self, pare se a conexão não identificar claramente o próprio Site.
+- Se a conexão não identificar claramente um Site válido, pare e peça ao usuário para conferir a configuração MCP.
 - Se o pedido for criar uma página nova, use `create_page` e mantenha o rascunho. Se o usuário apontou uma página existente que não foi encontrada, pare e confirme o destino antes de criar outra.
 - Se a leitura após a gravação não confirmar a mudança, trate a operação como não concluída e explique o erro de forma simples.
 

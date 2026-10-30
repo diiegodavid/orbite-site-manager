@@ -2,8 +2,7 @@
 
 Use a conexão MCP explicitamente escolhida para a tarefa.
 
-- Em modo `self`, o destino é o próprio Site conectado em `/mcp`.
-- Em modo `customer`, o destino é o Site salvo no painel da Orbite e a conexão usa `/mcp/customer`.
+- O destino é o Site identificado pela própria conexão em `/mcp`.
 - Nenhuma ferramenta aceita uma URL de destino.
 
 ## Leituras
@@ -39,7 +38,7 @@ Envie ao validador somente o manifesto proposto: `schema_version`, `kind`, `runt
 
 A fonte continua sendo um único valor versionado, mas contém três blocos nesta ordem: uma raiz HTML com o `root_id`, um `<style>` com CSS direto e um `<script>` com JavaScript. Nunca envie SCSS ou outro pré-processador.
 
-O runtime inline é confiável: Shadow DOM separa a estrutura e o CSS visualmente, mas o JavaScript roda no mesmo documento do Site. Use somente fonte criada ou aprovada por administrador/Codex. Ações próprias do Site passam pela API do host e por uma lista permitida; para contratação, use `OrbiteMedia.requestHostAction('open-start-plan')` com a capacidade `host-action`.
+O runtime inline é confiável: Shadow DOM separa a estrutura e o CSS visualmente, mas o JavaScript roda no mesmo documento do Site. Use somente fonte criada ou aprovada por administrador/Codex. Ações próprias do Site passam pela API do host e por uma lista permitida. Use somente ações informadas pelo contexto do Site e nunca invente nomes, URLs, funções ou comandos.
 
 ## Manifesto legado `vanilla-web@1`
 

@@ -10,8 +10,8 @@ Construa o conteúdo da página o mais próximo possível da referência usando 
 ## Regras obrigatórias
 
 - A chamada desta skill não autoriza edições automaticamente. Primeiro faça um diagnóstico curto, apresente as soluções e peça autorização para implementar.
-- Confirme a conexão MCP, o ambiente e o modo antes de trabalhar. Nunca use produção quando o ambiente estiver ambíguo.
-- Em modo `self`, o destino é o próprio Site conectado. Em modo `customer`, o destino é somente o Site salvo no painel da Orbite. Nunca aceite uma URL enviada no chat.
+- Confirme a conexão MCP, o ambiente e o Site identificado por ela antes de trabalhar. Nunca use produção quando o ambiente estiver ambíguo.
+- O destino é somente o Site identificado pela conexão MCP escolhida. Nunca aceite uma URL enviada no chat.
 - Trabalhe somente com templates já cadastrados no Site. Esta skill não cria, edita nem orienta arquivos de template ou outros arquivos do tema.
 - Se a referência exigir um template que não existe, explique o limite e encaminhe essa parte para a equipe da Orbite. Não tente contornar o limite gerando PHP, SCSS ou JavaScript do tema.
 - Código criado pelo cliente fica limitado aos componentes interativos de mídia e pertence a `$orbite-media-component-builder`.
@@ -40,7 +40,7 @@ Construa o conteúdo da página o mais próximo possível da referência usando 
 
 ## Limite de responsabilidade
 
-O MCP cria páginas somente como rascunho e cuida do conteúdo, imagens, configurações globais, menus e seleção de modelos já cadastrados no Site conectado. Em modo Customer, esse Site é o que está salvo no painel da Orbite.
+O MCP cria páginas somente como rascunho e cuida do conteúdo, imagens, configurações globais, menus e seleção de modelos já cadastrados no Site identificado pela conexão.
 
 Templates de página, cabeçalho e rodapé são responsabilidade exclusiva do fluxo interno da Orbite. O cliente pode gerar código somente dentro dos componentes interativos de mídia.
 

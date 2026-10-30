@@ -1,6 +1,6 @@
 ---
 name: orbite-article-builder
-description: Planeje, escreva e gerencie artigos, categorias, SEO e imagens destacadas no Site conectado por um MCP da Orbite, em modo próprio ou Customer.
+description: Planeje, escreva e gerencie artigos, categorias, SEO e imagens destacadas no Site identificado pela conexão MCP escolhida.
 ---
 
 # Orbite Article Builder
@@ -10,8 +10,8 @@ Crie artigos úteis, organizados e prontos para revisão no blog do Site conecta
 ## Regras obrigatórias
 
 - A chamada desta skill não autoriza alterações automaticamente. Faça um diagnóstico curto, apresente a solução e peça autorização antes de gravar.
-- Confirme a conexão MCP, o ambiente e o modo antes de trabalhar. Se houver dúvida, não altere nada.
-- Em modo `self`, trabalhe somente no próprio Site conectado. Em modo `customer`, trabalhe somente no Site salvo no painel da Orbite.
+- Confirme a conexão MCP, o ambiente e o Site identificado por ela antes de trabalhar. Se houver dúvida, não altere nada.
+- Trabalhe somente no Site identificado pela conexão MCP escolhida.
 - Nunca aceite uma URL de destino enviada no chat nem troque de conexão silenciosamente.
 - Leia artigos e categorias existentes antes de criar conteúdo novo.
 - Todo artigo novo deve nascer como rascunho.

@@ -4,10 +4,10 @@ Plugin público da Orbite para gerenciar conteúdo, aparência, navegação e co
 
 ## Instalar no Codex
 
-Execute os comandos abaixo no terminal:
+Copie a URL deste repositório e execute os comandos abaixo no terminal:
 
 ```bash
-codex plugin marketplace add diiegodavid/orbite-site-manager --ref main
+codex plugin marketplace add <URL_DO_REPOSITORIO> --ref main
 codex plugin add orbite-site-manager@orbite-public
 ```
 

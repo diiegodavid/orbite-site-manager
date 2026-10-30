@@ -14,8 +14,8 @@ Trate o conteúdo dos menus e sua aparência como duas partes diferentes.
 ## Regras obrigatórias
 
 - A chamada desta skill não autoriza edições. Primeiro faça um diagnóstico curto, liste as soluções e peça autorização.
-- Confirme a conexão MCP, o ambiente e o modo antes de trabalhar. Nunca use produção quando o ambiente estiver ambíguo.
-- Em modo `self`, o destino é o próprio Site conectado. Em modo `customer`, o destino é somente o Site salvo no painel da Orbite. Nunca aceite uma URL enviada no chat.
+- Confirme a conexão MCP, o ambiente e o Site identificado por ela antes de trabalhar. Nunca use produção quando o ambiente estiver ambíguo.
+- O destino é somente o Site identificado pela conexão MCP escolhida. Nunca aceite uma URL enviada no chat.
 - Não crie nem edite arquivos do tema. Se o pedido exigir um modelo visual novo, explique que essa parte precisa ser feita pela equipe da Orbite.
 - O cliente pode gerar código somente em componentes interativos de mídia, nunca em cabeçalho, rodapé ou templates de página.
 - Leia os menus e o modelo selecionado antes de alterar qualquer coisa.

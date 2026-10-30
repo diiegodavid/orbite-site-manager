@@ -1,6 +1,6 @@
 # MCP das configurações globais
 
-Use a conexão MCP explicitamente escolhida para a tarefa. Em modo `self`, o destino é o próprio Site conectado em `/mcp`. Em modo `customer`, o destino é o Site salvo no painel da Orbite e a conexão usa `/mcp/customer`. Nenhuma ferramenta aceita uma URL de destino.
+Use a conexão MCP explicitamente escolhida para a tarefa. O destino é o Site identificado pela própria conexão em `/mcp`. Nenhuma ferramenta aceita uma URL de destino.
 
 ## Ferramentas
 

@@ -2,8 +2,7 @@
 
 Use a conexão MCP explicitamente escolhida para a tarefa.
 
-- Em modo `self`, o destino é o próprio Site que expõe `/mcp`.
-- Em modo `customer`, disponível somente na Orbite, o destino é o Site salvo no painel e a conexão usa `/mcp/customer`.
+- O destino é o Site identificado pela própria conexão em `/mcp`.
 - Nunca aceite uma URL de destino enviada no chat nem altere os dois ambientes na mesma tarefa.
 
 ## Artigos

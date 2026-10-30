@@ -11,12 +11,7 @@ Use este fluxo somente quando a tarefa precisar observar a aparência dos wirefr
 
 ### Endereço local
 
-No ambiente local, nunca continue por um endereço que recebeu uma porta interna.
-
-- Correto: `https://cliente.local/wp-admin/`
-- Errado: `https://cliente.local:10012/wp-admin/`
-
-Se houver redirecionamento para uma URL com porta, volte para a URL canônica do Site sem a porta e com a barra final antes de continuar.
+No ambiente local, use sempre o endereço HTTPS oficial confirmado pela conexão MCP. Se o navegador redirecionar para outro host ou acrescentar uma porta interna, pare e volte ao endereço oficial, sem a porta interna e com a barra final, antes de continuar.
 
 ## Login no WordPress
 

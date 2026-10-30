@@ -10,8 +10,8 @@ Crie componentes interativos responsivos em HTML, CSS direto e JavaScript. Compo
 ## Regras obrigatórias
 
 - A chamada desta skill não autoriza alterações. Faça as leituras necessárias, mostre uma proposta curta e peça autorização imediatamente antes da primeira escrita.
-- Confirme a conexão MCP, o ambiente e o modo. Se houver dúvida, não altere nada. Antes de uma escrita em produção, diga explicitamente que o destino é produção.
-- Em modo `self`, use somente o próprio Site conectado. Em modo `customer`, use somente o Site salvo no painel da Orbite.
+- Confirme a conexão MCP, o ambiente e o Site identificado por ela. Se houver dúvida, não altere nada. Antes de uma escrita em produção, diga explicitamente que o destino é produção.
+- Use somente o Site identificado pela conexão MCP escolhida.
 - Nunca aceite outra URL enviada no chat nem troque de conexão silenciosamente.
 - Componentes novos usam `trusted-inline@1`, `html-css-js@1`, `orbite-media-v1`, `media-slot` e `media-inline-v1`. Preserve `vanilla-web@1` e `media-slot-v1` somente ao editar uma versão legada que já use esse runtime.
 - Use CSS direto dentro de `<style>`. Nunca gere SCSS, Sass, Less nem dependa de compilação posterior.
