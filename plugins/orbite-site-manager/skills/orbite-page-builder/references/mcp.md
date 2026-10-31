@@ -11,7 +11,10 @@ Use a conexão MCP explicitamente escolhida para a tarefa.
 | --- | --- | --- |
 | Ler uma página existente | `get_page` | `slug` |
 | Atualizar uma página existente | `update_page` | `slug`, `content` |
+| Trocar, remover ou restaurar mídia responsiva | `update_responsive_media` | `slug`, seção, papel, operação, alcance, estado atual e hash |
 | Listar páginas | `list_pages` | `search`, `status`, `page`, `per_page` |
+| Localizar revisões por data ou características | `list_page_revisions` | `id` ou `slug`, `page`, `per_page` |
+| Ler uma revisão escolhida | `get_page_revision` | `id` ou `slug`, `revision_id` |
 | Criar página em rascunho | `create_page` | `title`, `slug` |
 | Duplicar página em rascunho | `duplicate_page` | `source_id` ou `source_slug` |
 | Publicar ou voltar para rascunho | `set_page_status` | `id` ou `slug`, `status`, `expected_hash`, `expected_status` |
@@ -19,7 +22,7 @@ Use a conexão MCP explicitamente escolhida para a tarefa.
 | Ler uma área global | `get_global_settings_context` | `area` |
 | Atualizar uma área global | `update_global_settings_context` | `area`, `changes`, `expected_hash` |
 | Ler menus | `get_menus` | nenhuma |
-| Atualizar menus | `update_menus` | `menus` |
+| Atualizar menus | `update_menus` | `menus`, `expected_hash` |
 | Consultar a galeria | `list_images` | `search`, `page`, `per_page` |
 | Consultar uma imagem | `get_image` | `id` ou `slug` |
 | Enviar uma imagem | `upload_image` | `name`, `content_base64` |
@@ -46,6 +49,16 @@ Esta skill não executa deploy nem altera arquivos do tema.
 6. Leia novamente o mesmo recurso e compare o resultado.
 
 Ao atualizar uma página, envie o `content_hash` da leitura anterior em `expected_hash`. O MCP não cria cópias da página; o histórico fica por conta das revisões nativas do WordPress.
+
+Para mídia responsiva, siga [responsive-media.md](responsive-media.md). Prefira `update_responsive_media` a editar `src-mobile` manualmente. A ferramenta aceita mídia principal, item de lista, galeria e background, preserva a outra tela e confirma o valor salvo. Uma rota de componente interativo pertence às ferramentas atômicas de `$orbite-media-component-builder`.
+
+## Memória da página
+
+Quando o usuário citar uma data, uma hora ou uma característica antiga, use `list_page_revisions` para localizar candidatos pelos resumos. Consulte com `get_page_revision` somente as revisões que realmente podem atender ao pedido.
+
+Compare a candidata com `get_page` e monte uma proposta seletiva: reutilize apenas a parte antiga pedida e preserve todo o restante da página atual. Se duas revisões parecerem válidas ou a correspondência não estiver clara, mostre as opções e peça ao usuário para escolher.
+
+Uma leitura histórica é somente consulta. Antes de salvar, explique qual revisão serviu de referência, o que será recuperado e o que continuará atual, peça autorização e releia a página para obter o `content_hash` mais recente. Depois use o fluxo normal de `update_page` e confirme com outra leitura. Não existe restauração automática de página por estas ferramentas.
 
 Para publicar ou devolver uma página para rascunho, releia a página imediatamente antes da ação e use `set_page_status` com o `content_hash` em `expected_hash` e o status atual em `expected_status`. Use somente `publish` ou `draft`, após pedido e autorização explícitos do usuário, e releia a página para confirmar o status final.
 

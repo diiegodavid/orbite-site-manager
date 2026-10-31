@@ -19,6 +19,8 @@ Trate o conteúdo dos menus e sua aparência como duas partes diferentes.
 - Não crie nem edite arquivos do tema. Se o pedido exigir um modelo visual novo, explique que essa parte precisa ser feita pela equipe da Orbite.
 - O cliente pode gerar código somente em componentes interativos de mídia, nunca em cabeçalho, rodapé ou templates de página.
 - Leia os menus e o modelo selecionado antes de alterar qualquer coisa.
+- Quando o usuário citar uma organização anterior, data, hora ou característica antiga, use o histórico para localizar candidatos antes de propor a mudança. Não percorra o histórico sem necessidade.
+- Uma consulta histórica não autoriza restaurar nem editar menus.
 - Confirme toda gravação com uma nova leitura.
 
 ## Referências
@@ -28,12 +30,13 @@ Trate o conteúdo dos menus e sua aparência como duas partes diferentes.
 ## Fluxo
 
 1. Descubra se o pedido trata de conteúdo do menu, seleção de um modelo existente ou de um modelo visual novo.
-2. Leia os menus e liste os modelos já cadastrados.
-3. Explique o que pode ser feito pelo MCP e, se um modelo novo for necessário, encaminhe essa parte para a equipe da Orbite.
-4. Peça autorização antes de gravar.
-5. Atualize links e estruturas pelo MCP somente quando necessário.
-6. Selecione somente um modelo já cadastrado pelo MCP.
-7. Quando a mudança envolver configurações globais do cabeçalho ou rodapé, use `$orbite-global-settings`.
-8. Abra o Site e confira cabeçalho, submenus, rodapé, desktop e mobile.
+2. Leia os menus atuais e liste os modelos já cadastrados.
+3. Se o pedido mencionar o passado, liste primeiro os resumos históricos, abra somente as candidatas e compare a estrutura escolhida com os links atuais. Se houver ambiguidade, mostre as opções e peça ao usuário para escolher.
+4. Explique o que pode ser feito pelo MCP e, se um modelo novo for necessário, encaminhe essa parte para a equipe da Orbite.
+5. Mostre o que virá da estrutura antiga e o que será preservado do menu atual. Peça autorização antes de gravar.
+6. Releia os menus, use o hash mais recente e atualize links e estruturas pelo MCP somente quando necessário.
+7. Selecione somente um modelo já cadastrado pelo MCP.
+8. Quando a mudança envolver configurações globais do cabeçalho ou rodapé, use `$orbite-global-settings`.
+9. Abra o Site e confira cabeçalho, submenus, rodapé, desktop e mobile.
 
 Não crie novas localizações de menu sem um pedido específico. As localizações padrão são cabeçalho, cabeçalho do blog e rodapé.

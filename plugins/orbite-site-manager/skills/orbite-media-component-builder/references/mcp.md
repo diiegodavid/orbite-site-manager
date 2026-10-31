@@ -71,8 +71,10 @@ Uma prévia também é escrita e precisa de autorização. Envie a revisão, o e
 - Criar versão, publicar, restaurar e suas variantes atômicas também exigem `expected_latest_version`, `expected_published_version` e `expected_version_status`. Em criação de versão, esse estado é o da versão mais recente; em publicação, é o da versão alvo; em restauração, é o da versão de origem.
 - Renomear, arquivar e desarquivar exigem os dois ponteiros esperados (`expected_latest_version` e `expected_published_version`), inclusive quando o valor correto for `null`.
 - Aplicação e prévia exigem o estado esperado da versão. A aplicação também usa `expected_page_hash`, `expected_current_src`, `template_id` e o `media_path` exato.
+- Em uma aplicação responsiva, prefira `viewport_scope`: `desktop`, `mobile` ou `both`. O MCP deriva o `media_path` exato e limpa a substituição mobile quando o alcance for `both`. O campo antigo `media_path` continua aceito para compatibilidade.
 - Aplique apenas uma versão publicada e compatível com o host do próprio runtime: `media-inline-v1` para `trusted-inline@1` ou `media-slot-v1` para o legado.
 - Se já houver alvo, use a operação atômica correspondente. Não crie primeiro e tente consertar a página depois.
+- Uma aplicação somente no mobile preserva o desktop; uma aplicação somente no desktop preserva o mobile; `both` aplica no desktop e faz o mobile voltar a herdá-lo.
 - Ao editar, só aplique automaticamente quando o alvo já usar o mesmo componente ou quando o usuário pedir explicitamente para usar/aplicar. Caso contrário, publique a nova versão somente na biblioteca.
 - Só informe sucesso depois do readback real do componente, versão e ponteiros. Quando houver aplicação, confira também a página e o `src`. Respostas confirmadas incluem nome, `reference_code`, revisão, versão, estado e `src` quando houver aplicação.
 

@@ -20,27 +20,32 @@ Construa o conteúdo da página o mais próximo possível da referência usando 
 - Só publique uma página ou a devolva para rascunho quando o usuário pedir e autorizar essa mudança claramente.
 - Nunca mova páginas para a lixeira nem as exclua definitivamente por este fluxo.
 - Não exponha tokens, credenciais ou segredos em mensagens, arquivos ou logs.
+- Use o histórico quando o usuário citar uma versão anterior, data, hora ou característica antiga, ou quando ele ajudar materialmente a cumprir o pedido. Não percorra revisões sem necessidade.
+- Consultar uma revisão não autoriza restaurar nem editar a página.
 
 ## Antes de trabalhar
 
 1. Confirme a imagem de referência, a página existente ou o título e slug da nova página, a conexão, o modo e o ambiente usados na visualização.
 2. Leia [references/fluxo-de-pagina.md](references/fluxo-de-pagina.md).
 3. Leia [references/mcp.md](references/mcp.md) antes de usar o MCP Orbite.
-4. Leia [references/validacao-visual.md](references/validacao-visual.md) antes de abrir o ChatPanel ou conferir wireframes no navegador.
+4. Leia [references/responsive-media.md](references/responsive-media.md) quando o pedido envolver mídia principal, lista, galeria ou background no desktop e no mobile.
+5. Leia [references/validacao-visual.md](references/validacao-visual.md) antes de abrir o ChatPanel ou conferir wireframes no navegador.
 
 ## Fluxo resumido
 
 1. Analise a referência e identifique quais partes podem ser atendidas pelos templates e componentes já disponíveis.
 2. Explique, em linguagem simples, o que será ajustado e se alguma parte depende de um template novo da equipe Orbite.
-3. Peça autorização antes de editar conteúdo.
-4. Se a página ainda não existir, crie-a como rascunho pelo MCP correto.
-5. Leia o JSON atual pelo MCP antes de qualquer alteração.
-6. Atualize somente os campos necessários da página ou dos menus. Para configurações globais, use `$orbite-global-settings`.
+3. Quando o pedido mencionar o passado, liste primeiro os resumos das revisões, abra somente as candidatas e compare-as com a página atual. Se houver mais de uma interpretação possível, peça ao usuário para escolher.
+4. Mostre o que virá da versão antiga, o que será preservado da versão atual e peça autorização antes de editar conteúdo.
+5. Se a página ainda não existir, crie-a como rascunho pelo MCP correto.
+6. Leia o JSON atual pelo MCP antes de qualquer alteração.
+7. Atualize somente os campos necessários da página ou dos menus. Para configurações globais, use `$orbite-global-settings`.
    Para criar ou editar código interativo dentro de um espaço de mídia, use `$orbite-media-component-builder`; esta skill continua responsável por localizar a página, a seção e o alvo exato.
-7. Leia novamente pelo MCP para confirmar que a gravação funcionou.
-8. Quando o usuário pedir publicação ou retorno para rascunho, releia a página e use `set_page_status` com o `content_hash` e o status atuais. Confirme o status final com outra leitura.
-9. Abra a página no navegador, siga o fluxo de validação visual do ChatPanel quando precisar conferir wireframes, compare com a imagem e faça ajustes pequenos e verificáveis.
-10. Termine com um resumo do que mudou, do que foi testado e das limitações restantes.
+   Para imagem, vídeo ou Lottie com variação por tela, use `update_responsive_media`; para componente interativo, entregue também `viewport_scope` à ferramenta atômica da skill de componentes.
+8. Leia novamente pelo MCP para confirmar que a gravação funcionou.
+9. Quando o usuário pedir publicação ou retorno para rascunho, releia a página e use `set_page_status` com o `content_hash` e o status atuais. Confirme o status final com outra leitura.
+10. Abra a página no navegador, siga o fluxo de validação visual do ChatPanel quando precisar conferir wireframes, compare com a imagem e faça ajustes pequenos e verificáveis.
+11. Termine com um resumo do que mudou, do que foi testado e das limitações restantes.
 
 ## Limite de responsabilidade
 

@@ -39,6 +39,8 @@ Depois da autorização:
 
 Quando a página precisar de uma imagem nova, gere o arquivo no Codex e envie-o com `upload_image`. Use o ID ou a URL retornados pelo MCP no conteúdo da página. Para reaproveitar uma imagem existente, pesquise primeiro com `list_images`.
 
+Quando desktop e mobile usarem mídias diferentes, leia e siga [responsive-media.md](responsive-media.md). Use a ação dedicada para imagem, vídeo e Lottie; use o fluxo atômico de componentes quando a nova mídia for interativa.
+
 O MCP cria a página somente como rascunho. Não publique, exclua nem crie arquivos de template por este fluxo.
 
 ## 4. Conferir no navegador

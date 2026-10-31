@@ -15,6 +15,7 @@ Gerencie o Design System do Site sem inventar chaves e sem alterar configuraçõ
 - Nunca aceite outra URL enviada no chat nem troque de conexão silenciosamente.
 - Use as ferramentas contextuais. Não use `update_global_settings` em um fluxo novo.
 - Nunca leia nem altere tokens de acesso, senhas, segredos, credenciais, campos internos ou campos marcados como somente leitura.
+- Essa proteção também vale para históricos e pontos antigos. Nunca tente descobrir um dado protegido por diferenças entre versões.
 - Atualize apenas uma área por vez e somente os campos necessários.
 - Trate a configuração da Agenda e os agendamentos como recursos separados.
 - Uma restauração afeta o Design System inteiro e exige autorização explícita.
@@ -26,13 +27,15 @@ Gerencie o Design System do Site sem inventar chaves e sem alterar configuraçõ
    - campos de uma área, inclusive listas marcadas como `writable`: `list_global_settings_areas` e `get_global_settings_context`;
    - Equipe, Depoimentos, Tabela de preços, Formulários, configuração da Agenda, Dúvidas comuns e Logos: `list_global_collections` e `get_global_collection_context`;
    - agendamentos de visitantes: use somente as ferramentas próprias de agendamentos.
-3. Explique em linguagem simples o valor atual, a menor mudança proposta e onde ela aparecerá no Site.
-4. Peça autorização antes de gravar.
-5. Grave com o hash da leitura mais recente:
+3. Quando o usuário citar uma versão anterior, data, hora ou característica antiga, consulte primeiro a evolução dos campos ou a lista de pontos históricos. Abra somente o contexto das candidatas e compare com o estado atual.
+4. Se houver mais de uma candidata ou se não estiver claro qual campo representa a característica descrita, mostre as opções e peça ao usuário para escolher.
+5. Explique em linguagem simples o valor atual, a parte antiga escolhida, a menor mudança proposta e tudo o que será preservado.
+6. Peça autorização antes de gravar.
+7. Releia o contexto atual e grave com o hash mais recente:
    - campos simples: `update_global_settings_context`;
    - coleções: `update_global_collection` com uma operação por chamada.
-6. Se a ferramenta devolver impacto e um `confirmation_token`, mostre esse impacto e peça uma nova autorização. Só então repita exatamente a mesma mudança com o token descartável. Não confirme automaticamente.
-7. Consulte novamente o mesmo recurso e confirme o resultado.
+8. Se a ferramenta devolver impacto e um `confirmation_token`, mostre esse impacto e peça uma nova autorização. Só então repita exatamente a mesma mudança com o token descartável. Não confirme automaticamente.
+9. Consulte novamente o mesmo recurso e confirme o resultado.
 
 Se o hash estiver desatualizado, releia a área e apresente novamente a proposta. Não repita a gravação automaticamente.
 

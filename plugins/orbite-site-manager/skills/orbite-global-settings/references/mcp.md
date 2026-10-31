@@ -17,6 +17,9 @@ Use a conexão MCP explicitamente escolhida para a tarefa. O destino é o Site i
 | Confirmar, concluir ou cancelar um agendamento | `update_schedule_appointment_status` |
 | Remarcar um agendamento | `reschedule_appointment` |
 | Listar pontos de restauração | `list_global_settings_backups` |
+| Consultar campos seguros em um ponto histórico | `get_global_settings_backup_context` |
+| Consultar a evolução de campos específicos | `get_global_settings_field_history` |
+| Consultar uma coleção em um ponto histórico | `get_global_collection_backup_context` |
 | Restaurar um ponto | `restore_global_settings_backup` |
 
 ## Leitura contextual
@@ -72,11 +75,23 @@ A coleção `forms` contém somente a configuração dos formulários. Não use 
 
 ## Dados protegidos
 
-Tokens de acesso, senhas, segredos e credenciais não pertencem a nenhum fluxo desta skill. Não tente encontrá-los no JSON amplo, em backups ou por outro caminho.
+Tokens de acesso, senhas, chaves, segredos, credenciais e webhooks não pertencem a nenhum fluxo desta skill. Não tente encontrá-los no JSON amplo, em backups, comparando versões ou por outro caminho.
+
+## Memória das configurações
+
+Use o histórico somente quando o usuário mencionar o passado por data, hora ou características, ou quando ele ajudar materialmente a cumprir o pedido.
+
+- Para descobrir quando campos específicos mudaram, comece com `get_global_settings_field_history`.
+- Para consultar outros campos seguros de uma candidata, use `get_global_settings_backup_context` com a área e, quando possível, somente as chaves necessárias.
+- Para Equipe, Depoimentos, Tabela de preços, Formulários, configuração da Agenda, Dúvidas comuns ou Logos, use `get_global_collection_backup_context` depois de escolher um ponto.
+
+Compare sempre o ponto histórico com o contexto atual. Reaproveite somente a característica solicitada e preserve os valores atuais que não fazem parte do pedido. Se a referência do usuário puder indicar mais de um ponto ou mais de um campo, apresente as candidatas e peça uma escolha.
+
+As consultas históricas não restauram nem autorizam alterações. Antes de gravar, informe a data ou o ponto usado, o que virá do passado e o que continuará atual, peça autorização e releia o hash corrente. Em seguida use a ferramenta de atualização própria do recurso e confirme com outra leitura.
 
 ## Restauração
 
 Liste os backups antes de escolher um ID. A restauração recupera o Design System inteiro, preserva as credenciais atuais e cria um novo backup do estado anterior.
 
-Não restaure apenas para testar e não escolha um backup sem identificação do usuário.
+Não use a restauração completa para combinar uma característica antiga com o estado atual. Não restaure apenas para testar e não escolha um backup sem identificação do usuário.
 
