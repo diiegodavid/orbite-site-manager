@@ -29,7 +29,8 @@ Construa o conteúdo da página o mais próximo possível da referência usando 
 2. Leia [references/fluxo-de-pagina.md](references/fluxo-de-pagina.md).
 3. Leia [references/mcp.md](references/mcp.md) antes de usar o MCP Orbite.
 4. Leia [references/responsive-media.md](references/responsive-media.md) quando o pedido envolver mídia principal, lista, galeria ou background no desktop e no mobile.
-5. Leia [references/validacao-visual.md](references/validacao-visual.md) antes de abrir o ChatPanel ou conferir wireframes no navegador.
+5. Leia [references/section-spacing.md](references/section-spacing.md) quando o pedido envolver margem, padding ou espaço vertical de uma seção, inclusive ajustes separados por lado ou exclusivos de mobile.
+6. Leia [references/validacao-visual.md](references/validacao-visual.md) antes de abrir o ChatPanel ou conferir wireframes no navegador.
 
 ## Fluxo resumido
 
