@@ -10,6 +10,9 @@ Use a conexão MCP explicitamente escolhida para a tarefa.
 | Ação | Ferramenta | Entrada principal |
 | --- | --- | --- |
 | Ler uma página existente | `get_page` | `slug` |
+| Consultar a estrutura completa de propriedades | `get_page_props_schema` | — |
+| Obter uma seção pronta com o preset oficial | `get_template_preset` | `template_id` |
+| Testar capacidades reais de um template | `get_template_capabilities` | `template_id`, `probes` |
 | Atualizar uma página existente | `update_page` | `slug`, `content` |
 | Trocar, remover ou restaurar mídia responsiva | `update_responsive_media` | `slug`, seção, papel, operação, alcance, estado atual e hash |
 | Listar páginas | `list_pages` | `search`, `status`, `page`, `per_page` |
@@ -49,6 +52,16 @@ Esta skill não executa deploy nem altera arquivos do tema.
 6. Leia novamente o mesmo recurso e compare o resultado.
 
 Ao atualizar uma página, envie o `content_hash` da leitura anterior em `expected_hash`. O MCP não cria cópias da página; o histórico fica por conta das revisões nativas do WordPress.
+
+Ao adicionar uma seção, use `get_template_preset` para começar com o mesmo JSON padrão criado pela API interna. Quando houver dúvida sobre o suporte de um template, consulte `get_page_props_schema`, escolha apenas propriedades relacionadas ao pedido e envie sondagens pequenas para `get_template_capabilities`. Cada sondagem parte do mesmo preset oficial. A resposta contém somente as variações que alteraram a renderização; use apenas essas propriedades na proposta de edição.
+
+`media` representa a mídia principal. `medias` representa uma coleção e, nos templates de cards, cada posição acompanha o item de mesmo índice em `contents.list`. Em ambos, `src` pode receber imagem, vídeo, arquivo Lottie ou a rota canônica de um componente interativo. Use `cover-src` para a capa de um vídeo. As proporções aceitas são `1:1`, `3:4`, `4:5`, `9:16`, `9:21`, `4:3`, `5:4`, `16:9`, `21:9` e `32:9`; use `aspect-ratio-mobile` quando o mobile precisar de outra proporção. Em `object-fit`, use `cover` para preencher com corte ou `contain` para mostrar a mídia inteira. Não use a coleção legada `videos`.
+
+No conteúdo, `caption` pode representar legenda, categoria ou nome da categoria da seção. Em botões, `icon-position` aceita `left` ou `right`, `target` aceita `_blank` ou vazio, e `tracking` recebe um identificador de rastreamento. As margens aceitam valores de `0` a `6`; use `0` ou `none` para removê-las.
+
+Consulte sempre o `guide` devolvido por `get_page_props_schema` para os significados de efeito, transição, duração, inversão e fixação dos fundos, além das regras de artigos. Para artigos, `post-type` aceita `post` ou `material`, `specific` recebe IDs, `category` recebe o nome exato, `recents` seleciona os mais recentes e `numberposts` limita a quantidade.
+
+Em `maps`, cada item usa `title`, `subtitle`, `lat` e `lng`. Em `icons`, cada item usa `name`.
 
 Para mídia responsiva, siga [responsive-media.md](responsive-media.md). Prefira `update_responsive_media` a editar `src-mobile` manualmente. A ferramenta aceita mídia principal, item de lista, galeria e background, preserva a outra tela e confirma o valor salvo. Uma rota de componente interativo pertence às ferramentas atômicas de `$orbite-media-component-builder`.
 
