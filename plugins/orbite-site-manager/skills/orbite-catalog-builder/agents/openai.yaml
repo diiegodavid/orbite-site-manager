@@ -1,0 +1,7 @@
+interface:
+  display_name: "Orbite Catalog Builder"
+  short_description: "Gerencia o catálogo no Site conectado"
+  default_prompt: "Use $orbite-catalog-builder para consultar e gerenciar o catálogo do Site MCP conectado."
+
+policy:
+  allow_implicit_invocation: true
