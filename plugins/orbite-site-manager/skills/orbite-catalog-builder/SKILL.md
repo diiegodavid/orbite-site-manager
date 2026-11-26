@@ -18,7 +18,11 @@ Gerencie o catálogo de exibição do Site conectado, respeitando os nomes usado
 - Antes de atualizar ou mudar a publicação, leia o item e use o `state_hash` mais recente.
 - Preserve campos que não fazem parte do pedido e confira o resultado com outra leitura.
 - Mova itens ou exclua categorias somente após pedido e autorização explícitos.
+- Para ordenar categorias, percorra todas as páginas de `list_catalog_categories`, apresente a sequência completa proposta e peça autorização antes de gravar.
+- Ao reordenar, envie todos os IDs uma única vez e use o `order_hash` da leitura mais recente como `expected_hash`. Depois, releia para conferir.
+- Para ordenar itens dentro de uma categoria, percorra todas as páginas de `list_catalog_category_items`, mostre a sequência completa e peça autorização. Depois, envie todos os IDs uma única vez com o `order_hash` mais recente e releia a categoria.
 - Nunca exclua definitivamente um item da lixeira.
+- Em `content`, use somente HTML semântico simples. Nunca envie `class`, `style`, `id` ou atributos de aparência; o template controla o visual.
 
 ## Imagens
 

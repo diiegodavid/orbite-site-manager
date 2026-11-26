@@ -1,45 +1,45 @@
 ---
 name: orbite-media-component-builder
-description: Crie, edite, versione, publique, aplique e gerencie componentes interativos confiáveis nos espaços de mídia do Site conectado por um MCP da Orbite. Use para elementos gráficos em HTML, CSS direto e JavaScript; imagens raster e templates reutilizáveis pertencem a fluxos próprios.
+description: Crie, edite, aplique e exclua componentes interativos simples nos espaços de mídia do Site conectado por um MCP da Orbite.
 ---
 
 # Orbite Media Component Builder
 
-Crie componentes interativos responsivos em HTML, CSS direto e JavaScript. Componentes novos e aprovados usam Shadow DOM no front-end; o iframe permanece apenas para versões legadas ou código não confiável.
+Componentes interativos possuem somente um nome e um HTML. O ID numérico é criado pelo banco e usado internamente na rota da mídia.
 
 ## Regras obrigatórias
 
-- A chamada desta skill não autoriza alterações. Faça as leituras necessárias, mostre uma proposta curta e peça autorização imediatamente antes da primeira escrita.
-- Confirme a conexão MCP, o ambiente e o Site identificado por ela. Se houver dúvida, não altere nada. Antes de uma escrita em produção, diga explicitamente que o destino é produção.
+- Confirme a conexão MCP, o ambiente e o Site identificado por ela. Antes de escrever em produção, informe explicitamente que o destino é produção.
 - Use somente o Site identificado pela conexão MCP escolhida.
 - Nunca aceite outra URL enviada no chat nem troque de conexão silenciosamente.
-- Componentes novos usam `trusted-inline@1`, `html-css-js@1`, `orbite-media-v1`, `media-slot` e `media-inline-v1`. Preserve `vanilla-web@1` e `media-slot-v1` somente ao editar uma versão legada que já use esse runtime.
-- Use CSS direto dentro de `<style>`. Nunca gere SCSS, Sass, Less nem dependa de compilação posterior.
-- `trusted-inline@1` executa como código confiável do Site, sem iframe. Use-o somente para código criado ou aprovado por administrador/Codex; não trate Shadow DOM como barreira de segurança para JavaScript desconhecido.
-- Trate cada criação como um elemento gráfico pequeno e responsivo. Nunca aceite rolagem interna; reduza ou reorganize o conteúdo para caber no espaço de mídia.
-- O ID público e o `root_id` são criados pelo Site. Nunca invente esses identificadores.
-- Listagens não devem ler fonte. Ao editar, leia somente a versão exata escolhida pelo usuário.
-- Imagens anexadas servem como referência para o modelo. Não as inclua nas ferramentas MCP; envie ao Site apenas mídias aprovadas pela ferramenta própria de upload.
-- Não exponha fonte, manifesto completo, tokens ou imagens em logs, histórico de aprovação ou mensagens de erro. Se o usuário incluir algo parecido com senha ou token no conteúdo, troque o valor por um exemplo seguro e informe a substituição sem repetir o original.
-- Conflitos de hash, revisão ou estado exigem nova leitura e uma nova proposta. Não repita a escrita automaticamente.
+- Trabalhe com o componente pelo nome. O ID do banco não faz parte da conversa nem precisa ser informado pelo usuário.
+- O HTML é um único documento com uma raiz, um `<style>` e um `<script>`, nesta ordem.
+- A raiz deve possuir um ID simples. O script deve declarar `const root = document.getElementById('ID-DA-RAIZ');` usando exatamente esse ID.
+- O componente deve ser completo por conta própria. Nunca presuma que `root` será fornecido pelo Site.
+- Use CSS direto. Nunca gere SCSS, Sass, Less, TypeScript, imports ou uma etapa de compilação.
+- Não use `setInterval`, `clearInterval`, workers ou APIs bloqueadas pelo executor. Para repetição, use `setTimeout` recursivo ou `requestAnimationFrame` e encerre o trabalho nos eventos de pausa e destruição.
+- Não aceite PHP, segredos, tokens nem código desconhecido de terceiros.
+- Trate cada criação como um elemento gráfico pequeno e responsivo, sem rolagem interna.
+- O Site valida o HTML antes de salvar. Uma edição atualiza o próprio registro e não cria versão.
+- Não existem rascunho, publicação, arquivamento, versão, manifesto ou restauração.
+- A rota usada no `src` da mídia é criada pelo Site no formato `/media-component/{id}/`.
 
 ## Fluxo
 
 1. Leia [references/mcp.md](references/mcp.md).
-2. Quando houver aplicação em página com diferença entre desktop e mobile, leia o [contrato único de mídia responsiva](../orbite-page-builder/references/responsive-media.md).
-3. Confirme a conexão com uma leitura simples e use `get_media_component_context` para receber tokens, tipografia, limites, `root_id`, envelope responsivo e contexto assinado.
-4. Para editar, renomear ou aplicar, aceite o ID curto ou um nome aproximado. O ID tem prioridade; pelo nome, procure na biblioteca. Se houver um único resultado claro, use o nome canônico e o ID do Site. Se houver duplicidade ou nenhum resultado, peça o ID e oriente o usuário a conferi-lo em Componentes no painel. Leia somente a versão exata com fonte.
-5. Para componente novo ou inline, leia [references/runtime-trusted-inline.md](references/runtime-trusted-inline.md). Leia [references/runtime-vanilla-web.md](references/runtime-vanilla-web.md) somente ao manter uma versão legada que já use `vanilla-web@1`.
-6. Gere um nome curto e claro quando for um componente novo; não peça nome nem ID ao usuário. O Site gera o ID curto e o `root_id`. O nome pode mudar; o ID curto permanece estável.
-7. Gere um único documento com raiz HTML, `<style>` contendo CSS direto e `<script>` contendo JavaScript. Use `validate_media_component`, corrija somente erros devolvidos pelo validador e faça no máximo duas novas tentativas.
-8. Apresente nome, operação, runtime, destino e alcance responsivo. Peça autorização antes de criar, publicar, renomear, restaurar, arquivar, desarquivar, gerar preview ou aplicar. Imediatamente antes da escrita em componente existente, releia e fixe revisão, estado, ponteiros e o estado da versão exigido pela ação; nunca complete esses campos por suposição.
-9. Sem alvo de página, grave e publique somente na biblioteca. Em uma edição, só aplique no alvo se ele já usar esse mesmo componente ou se o usuário pedir aplicação explicitamente. Com alvo exato e autorizado, prefira `create_media_component_and_apply`, `create_media_component_version_and_apply` ou `restore_media_component_version_and_apply` e envie `viewport_scope` como `desktop`, `mobile` ou `both`.
-10. Depois da escrita, confira o componente e a versão; quando houver aplicação, confira também a página e o `src` do alvo.
-11. Responda com nome, ID curto, versão, estado, local aplicado e alcance responsivo. Diga de forma simples se algo não pôde ser confirmado.
+2. Para localizar um componente, liste os nomes. Quando houver um único nome claro, use-o; se houver dúvida, peça o nome exato.
+3. Para editar, leia o componente exato e altere seu HTML no próprio registro.
+4. Para criar, gere um nome curto e claro quando o usuário não tiver informado um.
+5. Gere uma raiz HTML com ID, um `<style>` com CSS direto e um `<script>` que localize essa raiz pelo próprio ID.
+6. Use `create_media_component` para criar e `update_media_component` para editar.
+7. Quando houver uma mídia exata da página, prefira a operação combinada de criar ou editar e aplicar.
+8. Para aplicar um componente existente, use `apply_media_component_to_page` com o nome e o alvo responsivo.
+9. Depois da escrita, releia o componente. Quando houver aplicação, confira também a página e o `src`.
+10. Responda com o nome e, quando houver aplicação, o local e o alcance responsivo.
 
 ## Limites
 
 - Imagem raster pertence ao fluxo de imagem.
-- Criação ou edição estrutural de templates de página, cabeçalho ou rodapé pertence exclusivamente ao fluxo interno da Orbite. O cliente gera código somente dentro dos componentes interativos de mídia desta skill.
-- Cores e tipografia globais pertencem a `$orbite-global-settings`; esta skill apenas consome os tokens devolvidos pelo contexto.
-- Alterar proporção ou `fit` pertence ao espaço de mídia da página e não cria uma versão do componente.
+- Templates de página, cabeçalho e rodapé pertencem aos fluxos próprios.
+- Cores e tipografia globais pertencem a `$orbite-global-settings`; o componente apenas usa os tokens disponíveis.
+- Alterar proporção ou `fit` pertence ao espaço de mídia da página.

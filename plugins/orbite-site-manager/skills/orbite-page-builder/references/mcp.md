@@ -11,7 +11,8 @@ Use a conexão MCP explicitamente escolhida para a tarefa.
 | --- | --- | --- |
 | Ler uma página existente | `get_page` | `slug` |
 | Consultar a estrutura completa de propriedades | `get_page_props_schema` | — |
-| Obter uma seção pronta com o preset oficial | `get_template_preset` | `template_id` |
+| Consultar uma seção pronta sem salvar | `get_template_preset` | `template_id` |
+| Adicionar uma seção pelo preset oficial | `insert_page_section` | `slug`, `template_id`, `expected_hash`; `position` é opcional |
 | Testar capacidades reais de um template | `get_template_capabilities` | `template_id`, `probes` |
 | Atualizar uma página existente | `update_page` | `slug`, `content` |
 | Trocar, remover ou restaurar mídia responsiva | `update_responsive_media` | `slug`, seção, papel, operação, alcance, estado atual e hash |
@@ -53,7 +54,11 @@ Esta skill não executa deploy nem altera arquivos do tema.
 
 Ao atualizar uma página, envie o `content_hash` da leitura anterior em `expected_hash`. O MCP não cria cópias da página; o histórico fica por conta das revisões nativas do WordPress.
 
-Ao adicionar uma seção, use `get_template_preset` para começar com o mesmo JSON padrão criado pela API interna. Quando houver dúvida sobre o suporte de um template, consulte `get_page_props_schema`, escolha apenas propriedades relacionadas ao pedido e envie sondagens pequenas para `get_template_capabilities`. Cada sondagem parte do mesmo preset oficial. A resposta contém somente as variações que alteraram a renderização; use apenas essas propriedades na proposta de edição.
+Ao adicionar uma seção, use `insert_page_section`. Envie somente a página, o template e o hash da leitura atual; omita `position` para inserir no final. Nunca envie conteúdo, mídia, classes ou propriedades nessa criação. A ferramenta monta e salva o preset oficial puro. Use a página e o novo `content_hash` devolvidos para administrar os campos pedidos somente depois que a criação estiver confirmada.
+
+Os vínculos globais exigidos por templates de depoimentos, equipe, FAQ, preços ou agenda também pertencem à etapa posterior de administração. Se a resposta trouxer `page_changed_after_insert: true`, a seção já foi criada, mas a página recebeu outra alteração logo depois. Não chame `insert_page_section` de novo; continue usando a página e o `content_hash` atuais devolvidos.
+
+Use `get_template_preset` apenas quando precisar consultar a estrutura padrão sem salvar. Não copie esse JSON manualmente para `update_page` com o objetivo de criar uma seção. Quando houver dúvida sobre o suporte de um template, consulte `get_page_props_schema`, escolha apenas propriedades relacionadas ao pedido e envie sondagens pequenas para `get_template_capabilities`. Cada sondagem parte do mesmo preset oficial. A resposta contém somente as variações que alteraram a renderização; use apenas essas propriedades na proposta de edição.
 
 `media` representa a mídia principal. `medias` representa uma coleção e, nos templates de cards, cada posição acompanha o item de mesmo índice em `contents.list`. Em ambos, `src` pode receber imagem, vídeo, arquivo Lottie ou a rota canônica de um componente interativo. Use `cover-src` para a capa de um vídeo. As proporções aceitas são `1:1`, `3:4`, `4:5`, `9:16`, `9:21`, `4:3`, `5:4`, `16:9`, `21:9` e `32:9`; use `aspect-ratio-mobile` quando o mobile precisar de outra proporção. Em `object-fit`, use `cover` para preencher com corte ou `contain` para mostrar a mídia inteira. Não use a coleção legada `videos`.
 

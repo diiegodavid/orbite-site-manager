@@ -32,10 +32,12 @@ Depois da autorização:
 2. Liste as páginas quando o destino ainda não estiver claro.
 3. Se a página não existir, crie-a como rascunho com `create_page`.
 4. Leia a página pelo slug e guarde seu `content_hash`.
-5. Monte a alteração usando a estrutura real do JSON recebido e somente templates já cadastrados.
-6. Atualize apenas as seções e campos necessários, enviando o hash. O WordPress cuidará das revisões nativas da página.
-7. Use configurações globais e menus somente quando a referência realmente exigir.
-8. Leia tudo novamente para confirmar a gravação.
+5. Quando precisar de uma nova seção, use `insert_page_section` somente com página, template e hash. Não monte campos da seção nessa chamada: o Site cria e salva o preset oficial puro, no final da página por padrão.
+6. Use a página e o novo `content_hash` devolvidos para administrar o conteúdo e os vínculos globais exigidos pelo template somente depois da criação. Se a resposta indicar `page_changed_after_insert`, a seção já existe: não tente inseri-la novamente; continue a partir da página atual retornada.
+7. Monte as demais alterações usando a estrutura real do JSON recebido e somente templates já cadastrados.
+8. Atualize apenas as seções e campos necessários, enviando o hash. O WordPress cuidará das revisões nativas da página.
+9. Use configurações globais e menus somente quando a referência realmente exigir.
+10. Leia tudo novamente para confirmar a gravação.
 
 Quando a página precisar de uma imagem nova, gere o arquivo no Codex e envie-o com `upload_image`. Use o ID ou a URL retornados pelo MCP no conteúdo da página. Para reaproveitar uma imagem existente, pesquise primeiro com `list_images`.
 

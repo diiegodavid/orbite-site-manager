@@ -40,13 +40,14 @@ Construa o conteúdo da página o mais próximo possível da referência usando 
 4. Mostre o que virá da versão antiga, o que será preservado da versão atual e peça autorização antes de editar conteúdo.
 5. Se a página ainda não existir, crie-a como rascunho pelo MCP correto.
 6. Leia o JSON atual pelo MCP antes de qualquer alteração.
-7. Atualize somente os campos necessários da página ou dos menus. Para configurações globais, use `$orbite-global-settings`.
+7. Para adicionar uma seção, use `insert_page_section` com a página, o template e o `content_hash` atual. Não envie conteúdo, mídia, classes nem propriedades nessa criação: a ferramenta deve salvar o preset oficial puro, no final da página por padrão. Só depois administre os campos pedidos e os vínculos globais exigidos pelo template, usando a página e o novo hash devolvidos. Se `page_changed_after_insert` vier como verdadeiro, a seção já foi criada: não repita a inserção; continue a partir da página atual retornada.
+8. Atualize somente os campos necessários da página ou dos menus. Para configurações globais, use `$orbite-global-settings`.
    Para criar ou editar código interativo dentro de um espaço de mídia, use `$orbite-media-component-builder`; esta skill continua responsável por localizar a página, a seção e o alvo exato.
    Para imagem, vídeo ou Lottie com variação por tela, use `update_responsive_media`; para componente interativo, entregue também `viewport_scope` à ferramenta atômica da skill de componentes.
-8. Leia novamente pelo MCP para confirmar que a gravação funcionou.
-9. Quando o usuário pedir publicação ou retorno para rascunho, releia a página e use `set_page_status` com o `content_hash` e o status atuais. Confirme o status final com outra leitura.
-10. Abra a página no navegador, siga o fluxo de validação visual do ChatPanel quando precisar conferir wireframes, compare com a imagem e faça ajustes pequenos e verificáveis.
-11. Termine com um resumo do que mudou, do que foi testado e das limitações restantes.
+9. Leia novamente pelo MCP para confirmar que a gravação funcionou.
+10. Quando o usuário pedir publicação ou retorno para rascunho, releia a página e use `set_page_status` com o `content_hash` e o status atuais. Confirme o status final com outra leitura.
+11. Abra a página no navegador, siga o fluxo de validação visual do ChatPanel quando precisar conferir wireframes, compare com a imagem e faça ajustes pequenos e verificáveis.
+12. Termine com um resumo do que mudou, do que foi testado e das limitações restantes.
 
 ## Limite de responsabilidade
 
